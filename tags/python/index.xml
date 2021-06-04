@@ -8,12 +8,47 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 05 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Serializer</title>
+      <title>Django的设计理念和哲学</title>
       <link>https://i-mrhuanghs.github.io/post/serializer/</link>
       <pubDate>Tue, 05 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://i-mrhuanghs.github.io/post/serializer/</guid>
-      <description></description>
+      <description>Django作为一个庞大的、自带电池的、整体Web开发解决方案框架，源代码多、子系统多、工具多。要将如此多的内容集成到一起，必然需要一个指导性的设计理念和哲学思维。这样才不至于显得东拼西凑、杂乱无章、接口混乱，而是整体一致、思路清晰、逻辑合理。既方便了源码开发，也方便了应用开发。
+下面就介绍一下Django的设计理念和哲学思维，这其中有一些是Django源代码中正在遵循的，一些是使用者开发项目过程中需要遵循的：
+系统性原则 松耦合 Django 追求各子系统（层）的低耦合和高内聚。各层之间保持代码独立、功能独立、尽量没有交联。
+例如，模板层不需要知道用户的 Web 请求具体情况，模型层不需要了解模板层是如何展示数据的，视图层也不关心程序员所使用的模板系统到底是哪种和怎么使用的。通俗地说，模型层只关心数据的CRUD，视图层只负责业务逻辑的实现，模板层只管前端页面的渲染和展示。这三个核心层之间只有数据的传递，没有代码的交互，各自相对独立。
+更少的代码 Django 建议每个APP的代码应该尽可能地精简，应该充分利用 Python 的动态能力，比如自省机制（introspection）。
+快速开发 Django诞生于一个新闻编辑社，其应用环境要求快速开发和迅速迭代，所以在设计之初就追求以更快的速度实现需求的处理，你只需要编写一些新代码，或者修改一些局部代码就可以实现新的站点。
+不要重复地造轮子 (DRY) 除非有特殊需求，所有官方或者生态圈内已经提供的库、工具、插件和功能，请直接拿来使用，不要自己开发。
+明确优于隐式 这条原则的根本意思是：不要玩花招、炫技巧，尽可能用更普通、更明确、更直观的语法，不要使用那些晦涩难懂的语法。将你的代码写得更啰嗦、更直白、更清晰，多两行不怕，多点注释更好。
+一致性 框架应在所有层级上保持一致。一致性适用于从低级（Python 的编码风格）到高级（使用 Django 的“经验”）的所有内容。
+这条规则既有代码规范上的要求，也有开发习惯的要求，要在整个项目中保持统一的风格。代码如其人，程序员是个什么样的性子和思路，在代码里能看得清清楚楚。要保持人设的统一性，不要前面是狂野粗放的大汉，后面是裹脚布又臭又长，这样不好，让人以为代码是好多不同的人写的，没有一个统一的章法。
+模型层相关 明确优于隐式 字段不应该仅仅根据字段的名称来假定某些行为。这需要对系统有太多了解，并且容易出现错误。相反，其行为应该基于关键字参数，并且在某些情况下，应该基于字段的类型。
+白话说就是：不要通过字段的名称上来指定它的功能，而应该通过详细、明确地选择字段的类型，定义字段的参数来设计字段。
+模型应当包含所有信息 模型中应该封装一个“对象”的各个方面，并遵循 Martin Fowler 的 Active Record 设计模式。
+也就是说，对于一个模型，任何与之相关的元信息、方法、函数、属性，包括其人类可读的名称，默认排序等选项，这些所有用于理解该模型所需的信息，都应该存储在模型中，而不要将它们放到视图、URL或者模板中去实现。
+ORM相关 提高SQL效率 应该尽可能少地执行SQL语句，并且应该在内部优化语句。
+开发者需要显式地调用 save()，而不是由框架静默地在幕后保存数据。
+API应该简洁并强大 ORM的API 应该允许用尽可能少的语法，来表达丰富、达意的语句。它不应该依赖于导入其他模块或辅助对象。
+每一个对象都应该能够访问所有相关的对象，和系统范围，并且这种访问应该是双向的。
+支持使用原生 SQL 语句 ORM的API 只是一个便捷的方法，但并不是最终的全部手段，框架必须支持使用原生SQL语句，这一点Django做到了。
+URL 设计相关 松耦合 Django 应用中的 URL 不应该与底层 Python 代码耦合。将 URL 与 Python 函数名联系起来是一件很糟糕且丑陋的做法。
+也就是说，APP中的视图到底干什么，和你的URL到底写成啥样没有关系，不能将URL和APP捆在一起绑死了。例如，一个网站可以在 /stories/ 中放置故事，而另一个网站则可以使用 /news/来放置故事，两种不同的URL其背后的APP是一样的，我虽然复用了APP，但我可以使用另外一套URL去映射它。</description>
+    </item>
+    
+    <item>
+      <title>Django 流式响应中文csv样例</title>
+      <link>https://i-mrhuanghs.github.io/post/testpage/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/testpage/</guid>
+      <description>在Django里，流式响应StreamingHttpResponse是个好东西,可以快速、节省内存地产生一个大型文件。
+目前项目里用于流式响应的一个是Eventsource，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。
+还有一个就是生成一个大的csv文件。
+当Django进程处于gunicorn或者uwsgi等web容器中时，如果响应超过一定时间没有返回，就会被web容器终止掉，虽然我们可以通过加长web容器的超时时间来绕过这个问题，但是毕竟还是治标不治本。要根本上解决这个问题，Python的生成器、Django框架提供的StreamingHttpResponse这个流式响应很有帮助
+而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈
+上代码：
+from __future__ import absolute_import import csv import codecs import cStringIO class Echo(object): def write(self, value): return value class UnicodeWriter: &amp;#34;&amp;#34;&amp;#34; A CSV writer which will write rows to CSV file &amp;#34;f&amp;#34;, which is encoded in the given encoding. &amp;#34;&amp;#34;&amp;#34; def __init__(self, f, dialect=csv.excel, encoding=&amp;#34;utf-8&amp;#34;, **kwds): # Redirect output to a queue self.queue = cStringIO.StringIO() self.writer = csv.writer(self.queue, dialect=dialect, **kwds) self.stream = f self.encoder = codecs.</description>
     </item>
     
   </channel>
