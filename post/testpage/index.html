@@ -28,9 +28,9 @@
     
 
     
-    <meta name="title" content="An Example Post" />
-    <meta property="og:title" content="An Example Post" />
-    <meta property="twitter:title" content="An Example Post" />
+    <meta name="title" content="Django 流式响应中文csv样例" />
+    <meta property="og:title" content="Django 流式响应中文csv样例" />
+    <meta property="twitter:title" content="Django 流式响应中文csv样例" />
     
 
     
@@ -47,7 +47,7 @@
     <meta name="keyword"  content="Hanson, Mrhuang, Python, Django, Docker, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>An Example Post-Hanson Huang Blog</title>
+    <title>Django 流式响应中文csv样例-Hanson Huang Blog</title>
 
     <link rel="canonical" href="/post/testpage/">
 
@@ -170,16 +170,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/tag1" title="tag1">
-                            tag1
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
-                        <a class="tag" href="/tags/tag2" title="tag2">
-                            tag2
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
                         </a>
                         
                     </div>
-                    <h1>An Example Post</h1>
+                    <h1>Django 流式响应中文csv样例</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -212,7 +212,82 @@
                 post-container">
 
                 
-                
+                <p>在Django里，流式响应<code>StreamingHttpResponse</code>是个好东西,可以快速、节省内存地产生一个大型文件。</p>
+<p>目前项目里用于流式响应的一个是<code>Eventsource</code>，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。</p>
+<p>还有一个就是生成一个大的csv文件。</p>
+<p>当Django进程处于gunicorn或者uwsgi等web容器中时，如果响应超过一定时间没有返回，就会被web容器终止掉，虽然我们可以通过加长web容器的超时时间来绕过这个问题，但是毕竟还是治标不治本。要根本上解决这个问题，Python的生成器、Django框架提供的<code>StreamingHttpResponse</code>这个流式响应很有帮助</p>
+<p>而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈</p>
+<p>上代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> absolute_import
+<span style="color:#f92672">import</span> csv
+<span style="color:#f92672">import</span> codecs
+<span style="color:#f92672">import</span> cStringIO
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Echo</span>(object):
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">write</span>(self, value):
+        <span style="color:#66d9ef">return</span> value
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UnicodeWriter</span>:
+
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    A CSV writer which will write rows to CSV file &#34;f&#34;,
+</span><span style="color:#e6db74">    which is encoded in the given encoding.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, f, dialect<span style="color:#f92672">=</span>csv<span style="color:#f92672">.</span>excel, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#f92672">**</span>kwds):
+        <span style="color:#75715e"># Redirect output to a queue</span>
+        self<span style="color:#f92672">.</span>queue <span style="color:#f92672">=</span> cStringIO<span style="color:#f92672">.</span>StringIO()
+        self<span style="color:#f92672">.</span>writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(self<span style="color:#f92672">.</span>queue, dialect<span style="color:#f92672">=</span>dialect, <span style="color:#f92672">**</span>kwds)
+        self<span style="color:#f92672">.</span>stream <span style="color:#f92672">=</span> f
+        self<span style="color:#f92672">.</span>encoder <span style="color:#f92672">=</span> codecs<span style="color:#f92672">.</span>getincrementalencoder(encoding)()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">writerow</span>(self, row):
+        self<span style="color:#f92672">.</span>writer<span style="color:#f92672">.</span>writerow([handle_column(s) <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> row])
+        <span style="color:#75715e"># Fetch UTF-8 output from the queue ...</span>
+        data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>getvalue()
+        data <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+        <span style="color:#75715e"># ... and reencode it into the target encoding</span>
+        data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>encoder<span style="color:#f92672">.</span>encode(data)
+        <span style="color:#75715e"># write to the target stream</span>
+        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>stream<span style="color:#f92672">.</span>write(data)
+        <span style="color:#75715e"># empty queue</span>
+        self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>truncate(<span style="color:#ae81ff">0</span>)
+        <span style="color:#66d9ef">return</span> value
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">writerows</span>(self, rows):
+        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> rows:
+            self<span style="color:#f92672">.</span>writerow(row)
+
+
+
+
+
+
+<span style="color:#f92672">from</span> django.views.generic <span style="color:#f92672">import</span> View
+<span style="color:#f92672">from</span> django.http.response <span style="color:#f92672">import</span> StreamingHttpResponse
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleView</span>(View):
+    headers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;一些&#39;</span>,<span style="color:#e6db74">&#39;表头&#39;</span>]
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self,request):
+        result <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;第一行&#39;</span>,<span style="color:#e6db74">&#39;数据1&#39;</span>],
+                  [<span style="color:#e6db74">&#39;第二行&#39;</span>,<span style="color:#e6db74">&#39;数据2&#39;</span>]]
+        echoer <span style="color:#f92672">=</span> Echo()
+        writer <span style="color:#f92672">=</span> UnicodeWriter(echoer)
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">csv_itertor</span>():
+                <span style="color:#66d9ef">yield</span> codecs<span style="color:#f92672">.</span>BOM_UTF8
+                <span style="color:#66d9ef">yield</span> writer<span style="color:#f92672">.</span>writerow(self<span style="color:#f92672">.</span>headers)
+                <span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> result:
+                    <span style="color:#66d9ef">yield</span> writer<span style="color:#f92672">.</span>writerow(column)
+
+        response <span style="color:#f92672">=</span> StreamingHttpResponse(
+            (row <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> csv_itertor()),
+            content_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/csv;charset=utf-8&#34;</span>)
+        response[<span style="color:#e6db74">&#39;Content-Disposition&#39;</span>
+                 ] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attachment;filename=&#34;example.csv&#34;&#39;</span>
+        <span style="color:#66d9ef">return</span> response
+</code></pre></div>
 
                 
 
@@ -221,7 +296,7 @@
                     
                     
                     <li class="next">
-                        <a href="/post/serializer/" data-toggle="tooltip" data-placement="top" title="Serializer">Next
+                        <a href="/post/serializer/" data-toggle="tooltip" data-placement="top" title="Django的设计理念和哲学">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -245,10 +320,6 @@
                     <hr class="hidden-sm hidden-xs">
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                        
-                        
-                        
                         
                         
                         
