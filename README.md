@@ -47,9 +47,9 @@ The backend system is deployed on Ubuntu. Below are dependencies required.
    # choose whatever name you like
    mkdir github
    cd github
-   git clone git@github.com:i-mrhuanghs/hugo-blog.git
+   git clone git@github.com:i-mrhuanghs/hugo-blog.git hugo-blog
    cd hugo-blog
-   git clone git@github.com:i-mrhuanghs/i-mrhuanghs.github.io.git
+   git clone git@github.com:i-mrhuanghs/i-mrhuanghs.github.io.git public
    ~~~~
 
 2. Run the backend system
