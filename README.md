@@ -8,14 +8,13 @@ Hugo Static Site Generator v0.80.0/extended darwin/amd64
 
 Deployment
 ----------
-### How to set up the backend system on Ubuntu
+# How to set up the backend system on Ubuntu
 
 The backend system is deployed on Ubuntu. Below are dependencies required.
 1. Build dependency
     - Install libs
         sudo apt-get install hugo
-        
-### How to set up the backend system on OS X
+# How to set up the backend system on OS X
 
 ## Preparation
 
