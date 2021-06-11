@@ -28,9 +28,9 @@
     
 
     
-    <meta name="title" content="Django" />
-    <meta property="og:title" content="Django" />
-    <meta property="twitter:title" content="Django" />
+    <meta name="title" content="Django的设计理念和哲学(二)" />
+    <meta property="og:title" content="Django的设计理念和哲学(二)" />
+    <meta property="twitter:title" content="Django的设计理念和哲学(二)" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="Hanson, Mrhuang, Python, Django, Docker, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Django-Hanson Huang Blog</title>
+    <title>Django的设计理念和哲学(二)-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/tags/django/">
+    <link rel="canonical" href="/post/django2/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -157,14 +157,41 @@
 
 
 
-<header class="intro-header" style="background-image: url('/images/main_go_wideandtall_darklayer.jpeg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/images/main_go_wideandtall_darklayer.jpeg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Software Engineering </h1>
-                    
-		    <span class="subheading">$ grep -rni &#34;The how&#39;s and why&#39;s&#34; .</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
+                    </div>
+                    <h1>Django的设计理念和哲学(二)</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                Mrhuang&#39;s blog
+                         
+                        on 
+                        Tuesday, June 5, 2018
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -173,181 +200,122 @@
 
 
 
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
 
-<div class="post-preview">
-    <a href="https://i-mrhuanghs.github.io/post/testpage/">
-        <h2 class="post-title">
-            Django 流式响应中文csv样例
-        </h2>
-	
-        <div class="post-content-preview">
-	    
-            在Django里，流式响应StreamingHttpResponse是个好东西,可以快速、节省内存地产生一个大型文件。
-目前项目里用于流式响应的一个是Eventsource，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。
-还有一个就是生成一个大的csv文件。
-当Django进程处于gunicorn或者uwsgi等web容器中时，如果响应超过一定时间没有返回，就会被web容器终止掉，虽然我们可以通过加长web容器的超时时间来绕过这个问题，但是毕竟还是治标不治本。要根本上解决这个问题，Python的生成器、Django框架提供的StreamingHttpResponse这个流式响应很有帮助
-而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈
-上代码：
-from __future__ import absolute_import import csv import codecs import cStringIO class Echo(object): def write(self, value): return value class UnicodeWriter: &#34;&#34;&#34; A CSV writer which will write rows to CSV file &#34;f&#34;, which is encoded in the given encoding. &#34;&#34;&#34; def __init__(self, f, dialect=csv.excel, encoding=&#34;utf-8&#34;, **kwds): # Redirect output to a queue self.queue = cStringIO.StringIO() self.writer = csv.writer(self.queue, dialect=dialect, **kwds) self.stream = f self.encoder = codecs.
-        
-       
-
-        </div>
-    </a>
-    <p class="post-meta">
-    Posted by      &#34;&#34; Monday, June 4, 2018
-    
-    
-    </p>
-
-</div>
-<hr>
-
+<article>
+    <div class="container">
+        <div class="row">
 
             
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-
-       	</div>
-        
-
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-             
-            
                 
-            
-                
-            
-        </div>
-    </section>
-    
+                <h2 id="模板系统相关">模板系统相关</h2>
+<h3 id="逻辑分离的解决方案">逻辑分离的解决方案</h3>
+<p>我们将模板系统看作一个工具，用于控制表现方式和表示方式相关的逻辑。模板系统不应该支持超出这个基本目标的功能。</p>
+<h3 id="避免冗余">避免冗余</h3>
+<p>大多数动态网站会使用一些网站整体通用的设计，比如通用的页眉、页脚、导航栏等等。Django 模板系统遵循了这一点，可以很容易地将这些元素存储在一个地方，从而减少重复的代码。</p>
+<h3 id="从-html-中解耦">从 HTML 中解耦</h3>
+<p>模板系统不应该被设计成只能输出 HTML。它应该同样擅长生成其他基于文本的格式，或者仅仅是纯文本。</p>
+<h3 id="xml不应被用于模板语言">XML不应被用于模板语言</h3>
+<p>使用 XML 引擎去解析模板会在编辑模板的过程中引入很多人为错误，并在模板处理中导致不可接受的开销。</p>
+<h3 id="不要指望模板系统能包打天下">不要指望模板系统能包打天下</h3>
+<p>Django 期望模板编写者有能力直接编辑 HTML 文本。</p>
+<h3 id="更加直接的处理空格">更加直接的处理空格</h3>
+<p>模板系统不应该用空白符来做神奇的事情。如果模板包含空白符，系统应该在处理文本时处理空格——只是显示它。任何不在模板标签中的空白符都应该显示出来。</p>
+<h3 id="不要发明一种编程语言">不要发明一种编程语言</h3>
+<p>模板系统的目标不是发明一种编程语言。它的目标是提供足够的具有编程风格的功能，比如分支和循环，这对于做出表现相关的决策是至关重要的。Django 模板语言（DTL） 旨在避免高级逻辑。</p>
+<p>Django 模板系统认为模板通常是由 设计师 编写的，而不是 程序员，因此不应该假设他了解 Python。</p>
+<p>所以，我们在使用Django的模板系统时会发现，这只是一个具有一般编程功能的渲染工具，不要妄图把它当作一个功能强大、语法完整的编程语言来使用。</p>
+<h3 id="安全与保障">安全与保障</h3>
+<p>开箱即用的模板系统禁止包含恶意代码，例如删除数据库记录的代码。</p>
+<p>这也是模板系统不允许有任意Python代码的另一个原因。</p>
+<h3 id="可扩展性">可扩展性</h3>
+<p>模板系统应该认识到, 高阶的模板作者可能想扩展它。</p>
+<p>这是自定义的模板标签和过滤器背后的理念。</p>
+<h2 id="视图">视图</h2>
+<h3 id="尽量简洁">尽量简洁</h3>
+<p>编写视图应该和编写 Python 函数一样简单。开发人员不应该在函数执行时实例化一个类。</p>
+<h3 id="使用请求对象">使用请求对象</h3>
+<p>视图应该能够访问一个请求对象——一个储存关于当前请求的元数据的对象。对象应该直接传递给视图函数，而不是必须从全局变量访问请求数据的视图函数。这使得通过传入“假”请求对象来测试视图变得轻松、干净和容易。</p>
+<p>根据这条理念，Django每个视图函数的第一个参数都是request，从这个request中，我们可以拿到所有用户请求相关的数据。</p>
+<h3 id="松耦合">松耦合</h3>
+<p>视图不应该关心开发人员使用哪种模板——甚至根本不用模板系统。</p>
+<h3 id="get-方法和-post-方法的区别">GET 方法和 POST 方法的区别</h3>
+<p>GET 和 POST 是不同的；开发人员应该明确地使用其中一个或另一个。框架应该使得 GET 和 POST 数据很容易区分。</p>
+<p>所以，在使用函数型视图的时候，应该明确地写明：<code>if request.method=='GET':pass</code>，而不要使用默认的函数执行顺序。</p>
+<h2 id="缓存框架相关">缓存框架相关</h2>
+<p>缓存框架 的核心目的是：</p>
+<h3 id="更少的代码">更少的代码</h3>
+<p>缓存应该尽可能快。因此，围绕缓存后端的所有框架代码都应该保持在绝对的最小值，特别是对于 get() 操作。</p>
+<h3 id="一致性">一致性</h3>
+<p>缓存 API 应该为不同的缓存后端提供一致的接口。</p>
+<h3 id="可扩展性-1">可扩展性</h3>
+<p>缓存 API 应该基于开发者的需求，在应用程序级别上是可扩展的（例如，参见 Cache key transformation）。</p>
 
-    
-	
-    <section class="visible-md visible-lg">
-	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
-        <div class="short-about">
-            
-            <a href="/top/about">
-               <img src="/images/MeAtJackson.jpeg" alt="avatar" style="cursor: pointer" />
-            </a>
-            
-            
-                <p>Python, Django, Docker, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler, oh yeah, Software Developer</p>
-            
-           
-           <ul class="list-inline"> 
-               
-               <li>
-                   <a href='/tags/django/index.xml' rel="alternate" type="application/rss+xml" title="Mrhuang&#39;s blog" >
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/i-mrhuanghs/">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://www.linkedin.com/in/richard-youngkin-0749763">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               <li>
-                   <a target="_blank" href="https://medium.com/@RichYoungkin">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-medium fa-stack-1x fa-inverse"></i>
-                            </span>
-                   </a>
-               </li>
-               
-               
-                    <li>
-                        <a target="_blank" href="https://stackoverflow.com/users/2646870/rich">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/testpage/" data-toggle="tooltip" data-placement="top" title="Django 流式响应中文csv样例">&larr;
+                            Previous Post</a>
                     </li>
-            
-            
-                    <li>
-                        <a target="_blank" href="https://www.reddit.com/user/elevation5280">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-reddit fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/serializer/" data-toggle="tooltip" data-placement="top" title="Django的设计理念和哲学(一)">Next
+                            Post &rarr;</a>
                     </li>
-            
-            
-               
-               
-               
-               
+                    
                 </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
             </div>
-    </section>
-	
-    
-    
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-    
-    
-</div>
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
 
-	</div>
-</div>
-
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
 
 
 
@@ -359,7 +327,7 @@ from __future__ import absolute_import import csv import codecs import cStringIO
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href='/tags/django/index.xml' rel="alternate" type="application/rss+xml" title="Mrhuang&#39;s blog" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Mrhuang&#39;s blog" >
                            <span class="fa-stack fa-lg">
                                <i class="fa fa-circle fa-stack-2x"></i>
                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
