@@ -197,22 +197,20 @@
             Django 流式响应中文csv样例
         </h2>
 	
+        <h3 class="post-subtitle">
+            Django 流式响应
+        </h3>
+	
         <div class="post-content-preview">
 	    
-            在Django里，流式响应StreamingHttpResponse是个好东西,可以快速、节省内存地产生一个大型文件。
-目前项目里用于流式响应的一个是Eventsource，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。
-还有一个就是生成一个大的csv文件。
-当Django进程处于gunicorn或者uwsgi等web容器中时，如果响应超过一定时间没有返回，就会被web容器终止掉，虽然我们可以通过加长web容器的超时时间来绕过这个问题，但是毕竟还是治标不治本。要根本上解决这个问题，Python的生成器、Django框架提供的StreamingHttpResponse这个流式响应很有帮助
-而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈
-上代码：
-from __future__ import absolute_import import csv import codecs import cStringIO class Echo(object): def write(self, value): return value class UnicodeWriter: &#34;&#34;&#34; A CSV writer which will write rows to CSV file &#34;f&#34;, which is encoded in the given encoding. &#34;&#34;&#34; def __init__(self, f, dialect=csv.excel, encoding=&#34;utf-8&#34;, **kwds): # Redirect output to a queue self.queue = cStringIO.StringIO() self.writer = csv.writer(self.queue, dialect=dialect, **kwds) self.stream = f self.encoder = codecs.
+            Django 流式响应生成csv
         
        
 
         </div>
     </a>
     <p class="post-meta">
-    Posted by      &#34;&#34; Monday, June 4, 2018
+    Posted by      &#34;other&#34; Monday, June 4, 2018
     
     
     </p>
