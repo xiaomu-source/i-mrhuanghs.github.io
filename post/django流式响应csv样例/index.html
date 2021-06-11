@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="程序猿如何做好离职交接" />
-    <meta property="og:title" content="程序猿如何做好离职交接" />
-    <meta property="twitter:title" content="程序猿如何做好离职交接" />
+    <meta name="title" content="Django 流式响应中文csv样例" />
+    <meta property="og:title" content="Django 流式响应中文csv样例" />
+    <meta property="twitter:title" content="Django 流式响应中文csv样例" />
     
 
     
-    <meta name="description" content="程序员在业务不熟悉的情况下，同事离职交接需要考虑的事项">
-    <meta property="og:description" content="程序员在业务不熟悉的情况下，同事离职交接需要考虑的事项" />
-    <meta property="twitter:description" content="程序员在业务不熟悉的情况下，同事离职交接需要考虑的事项" />
+    <meta name="description" content="采用Python的生成器、Django框架提供的`StreamingHttpResponse`生成csv的样例">
+    <meta property="og:description" content="采用Python的生成器、Django框架提供的`StreamingHttpResponse`生成csv的样例" />
+    <meta property="twitter:description" content="采用Python的生成器、Django框架提供的`StreamingHttpResponse`生成csv的样例" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="Hanson, Mrhuang, Python, Django, Docker, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>程序猿如何做好离职交接-Hanson Huang Blog</title>
+    <title>Django 流式响应中文csv样例-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/">
+    <link rel="canonical" href="/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -174,16 +174,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/%E7%A8%8B%E5%BA%8F%E7%8C%BF" title="程序猿">
-                            程序猿
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
-                        <a class="tag" href="/tags/%E5%B7%A5%E4%BD%9C" title="工作">
-                            工作
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
                         </a>
                         
                     </div>
-                    <h1>程序猿如何做好离职交接</h1>
+                    <h1>Django 流式响应中文csv样例</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -191,7 +191,7 @@
                                  &#34;other&#34;
                          
                         on 
-                        Tuesday, June 5, 2018
+                        Monday, June 4, 2018
                         
                         
                         
@@ -216,56 +216,81 @@
                 post-container">
 
                 
-                <p><strong>如果你做为一个程序员，在业务不熟悉的情况下，需要考虑哪些事项呢？</strong></p>
-<h4 id="项目源码相关注意点">项目源码相关注意点：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 将开发人员最后修改的代码提交。
-<span style="color:#66d9ef">-</span> 确定项目源码。
-<span style="color:#66d9ef">-</span> 确定项目对外API。
-<span style="color:#66d9ef">-</span> 确定项目定时脚本。
-<span style="color:#66d9ef">-</span> 确定项目日志查看平台。
-<span style="color:#66d9ef">-</span> 开通SVN的权限。
-<span style="color:#66d9ef">-</span> 开通GIT的权限。
-<span style="color:#66d9ef">-</span> 了解上线部署流程。
-<span style="color:#66d9ef">-</span> 了解代码规范。
-</code></pre></div><h4 id="数据库相关注意点">数据库相关注意点：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 相关数据库与数据表结构
-<span style="color:#66d9ef">-</span> 查看是否有未注释的库名、表名、字段名，将其确定。
-<span style="color:#66d9ef">-</span> 最好了解每一个数据库、表、字段的意义，更新到文档。
-<span style="color:#66d9ef">-</span> 最好将每一个表涉及到哪一个模块进行确认，更新到文档。
-</code></pre></div><h4 id="开发环境相关注意点">开发环境相关注意点：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 本地开发环境配置
-<span style="color:#66d9ef">-</span> 在自己本地电脑上配置环境，将项目在自己机器上运行成功。
-<span style="color:#66d9ef">-</span> 确认是否有其他的扩展，如需账号、端口，记得做记录。
-</code></pre></div><h4 id="测试环境">测试环境:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 开通测试账号。
-</code></pre></div><h4 id="预上线环境">预上线环境:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 开通预上线环境账号。
-<span style="color:#66d9ef">-</span> 确定预上线环境的域名地址，是否需要指定的Host等等。
-</code></pre></div><h4 id="正式环境">正式环境:</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 开通正式环境账号。
-</code></pre></div><h4 id="对接人相关注意点">对接人相关注意点：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 确定测试对接人。
-<span style="color:#66d9ef">-</span> 确定产品对接人。
-<span style="color:#66d9ef">-</span> 确定项目跨部门对接人。
-<span style="color:#66d9ef">-</span> 确定运维和DBA对接人
-</code></pre></div><h4 id="文档相关注意点">文档相关注意点：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 确定每一期的产品需求文档，PRD文档。
-<span style="color:#66d9ef">-</span> 确定每一期的测试覆盖文档，单元测试文档，遗留Bug。
-<span style="color:#66d9ef">-</span> 确定每一期的产品人员，开发人员，测试人员。
-<span style="color:#66d9ef">-</span> 确定代码中的坑、梳理过的流程图、设计框架图。
-<span style="color:#66d9ef">-</span> 确定每一期的开始开发时间，提测时间，上线时间。
-<span style="color:#66d9ef">-</span> 了解相关程序风险，遗留问题等。
-<span style="color:#66d9ef">-</span> 文档越多越好，未必会看，但留着备用总是好的。
-<span style="color:#66d9ef">-</span> 最好能邀请一个会议进行交接，叫上相关产品、开发、测试。
-</code></pre></div><h4 id="职业道德">职业道德：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 不要带入个人情绪，个人恩怨。
-<span style="color:#66d9ef">-</span> 要实现毫无保留的完成项目交接。
-<span style="color:#66d9ef">-</span> 组织一个会议进行项目交接，对于交接人员提出的问题，仔细逐一讲解、解答。
-<span style="color:#66d9ef">-</span> 交接单以交接人员签字确认为准，不要浮于形式，要走心。
-</code></pre></div><h4 id="备注">备注：</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">-</span> 最好能在员工提离职的时候就开始项目交接，而不是员工走的时候再做交接。
-<span style="color:#66d9ef">-</span> 离职要提前与上级领导沟通，给领导留出找对接人的时间。
-<span style="color:#66d9ef">-</span> 交接过程中遇到有疑问的地方，一定要确认清楚，做好记录。
+                <p>在Django里，流式响应<code>StreamingHttpResponse</code>是个好东西,可以快速、节省内存地产生一个大型文件。</p>
+<p>目前项目里用于流式响应的一个是<code>Eventsource</code>，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。</p>
+<p>还有一个就是生成一个大的csv文件。</p>
+<p>当Django进程处于gunicorn或者uwsgi等web容器中时，如果响应超过一定时间没有返回，就会被web容器终止掉，虽然我们可以通过加长web容器的超时时间来绕过这个问题，但是毕竟还是治标不治本。要根本上解决这个问题，Python的生成器、Django框架提供的<code>StreamingHttpResponse</code>这个流式响应很有帮助</p>
+<p>而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈</p>
+<p>上代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> absolute_import
+<span style="color:#f92672">import</span> csv
+<span style="color:#f92672">import</span> codecs
+<span style="color:#f92672">import</span> cStringIO
+
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Echo</span>(object):
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">write</span>(self, value):
+        <span style="color:#66d9ef">return</span> value
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UnicodeWriter</span>:
+
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    A CSV writer which will write rows to CSV file &#34;f&#34;,
+</span><span style="color:#e6db74">    which is encoded in the given encoding.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+
+    <span style="color:#66d9ef">def</span> __init__(self, f, dialect<span style="color:#f92672">=</span>csv<span style="color:#f92672">.</span>excel, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#f92672">**</span>kwds):
+        <span style="color:#75715e"># Redirect output to a queue</span>
+        self<span style="color:#f92672">.</span>queue <span style="color:#f92672">=</span> cStringIO<span style="color:#f92672">.</span>StringIO()
+        self<span style="color:#f92672">.</span>writer <span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>writer(self<span style="color:#f92672">.</span>queue, dialect<span style="color:#f92672">=</span>dialect, <span style="color:#f92672">**</span>kwds)
+        self<span style="color:#f92672">.</span>stream <span style="color:#f92672">=</span> f
+        self<span style="color:#f92672">.</span>encoder <span style="color:#f92672">=</span> codecs<span style="color:#f92672">.</span>getincrementalencoder(encoding)()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">writerow</span>(self, row):
+        self<span style="color:#f92672">.</span>writer<span style="color:#f92672">.</span>writerow([handle_column(s) <span style="color:#66d9ef">for</span> s <span style="color:#f92672">in</span> row])
+        <span style="color:#75715e"># Fetch UTF-8 output from the queue ...</span>
+        data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>getvalue()
+        data <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+        <span style="color:#75715e"># ... and reencode it into the target encoding</span>
+        data <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>encoder<span style="color:#f92672">.</span>encode(data)
+        <span style="color:#75715e"># write to the target stream</span>
+        value <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>stream<span style="color:#f92672">.</span>write(data)
+        <span style="color:#75715e"># empty queue</span>
+        self<span style="color:#f92672">.</span>queue<span style="color:#f92672">.</span>truncate(<span style="color:#ae81ff">0</span>)
+        <span style="color:#66d9ef">return</span> value
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">writerows</span>(self, rows):
+        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> rows:
+            self<span style="color:#f92672">.</span>writerow(row)
+
+
+
+
+
+
+<span style="color:#f92672">from</span> django.views.generic <span style="color:#f92672">import</span> View
+<span style="color:#f92672">from</span> django.http.response <span style="color:#f92672">import</span> StreamingHttpResponse
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExampleView</span>(View):
+    headers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;一些&#39;</span>,<span style="color:#e6db74">&#39;表头&#39;</span>]
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self,request):
+        result <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;第一行&#39;</span>,<span style="color:#e6db74">&#39;数据1&#39;</span>],
+                  [<span style="color:#e6db74">&#39;第二行&#39;</span>,<span style="color:#e6db74">&#39;数据2&#39;</span>]]
+        echoer <span style="color:#f92672">=</span> Echo()
+        writer <span style="color:#f92672">=</span> UnicodeWriter(echoer)
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">csv_itertor</span>():
+                <span style="color:#66d9ef">yield</span> codecs<span style="color:#f92672">.</span>BOM_UTF8
+                <span style="color:#66d9ef">yield</span> writer<span style="color:#f92672">.</span>writerow(self<span style="color:#f92672">.</span>headers)
+                <span style="color:#66d9ef">for</span> column <span style="color:#f92672">in</span> result:
+                    <span style="color:#66d9ef">yield</span> writer<span style="color:#f92672">.</span>writerow(column)
+
+        response <span style="color:#f92672">=</span> StreamingHttpResponse(
+            (row <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> csv_itertor()),
+            content_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/csv;charset=utf-8&#34;</span>)
+        response[<span style="color:#e6db74">&#39;Content-Disposition&#39;</span>
+                 ] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attachment;filename=&#34;example.csv&#34;&#39;</span>
+        <span style="color:#66d9ef">return</span> response
 </code></pre></div>
 
                 
@@ -273,11 +298,11 @@
                 <hr>
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/" data-toggle="tooltip" data-placement="top" title="Django 流式响应中文csv样例">&larr;
-                            Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

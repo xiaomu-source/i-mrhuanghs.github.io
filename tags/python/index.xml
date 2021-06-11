@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django 流式响应中文csv样例</title>
-      <link>https://i-mrhuanghs.github.io/post/testpage/</link>
+      <link>https://i-mrhuanghs.github.io/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://i-mrhuanghs.github.io/post/testpage/</guid>
+      <guid>https://i-mrhuanghs.github.io/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/</guid>
       <description>在Django里，流式响应StreamingHttpResponse是个好东西,可以快速、节省内存地产生一个大型文件。
 目前项目里用于流式响应的一个是Eventsource，用于改善跨系统通讯时用户产生的慢速的感觉。这个不细说了。
 还有一个就是生成一个大的csv文件。
