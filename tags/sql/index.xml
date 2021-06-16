@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on Mrhuang&#39;s blog</title>
+    <link>https://i-mrhuanghs.github.io/tags/sql/</link>
+    <description>Recent content in sql on Mrhuang&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>备份服务器数据库样例</title>
+      <link>https://i-mrhuanghs.github.io/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <pubDate>Fri, 15 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <description>备份服务器数据库样例 mysqldump -ubumblebeeuser -hstg2mysql-1.czrdgd08qzk4.eu-north-1.rds.amazonaws.com -p -d bumblebee_bc &amp;gt; 20210615.bumblebee.sql # 仅备份数据表结构 mysqldump -ubumblebeeuser -hstg2mysql-1.czrdgd08qzk4.eu-north-1.rds.amazonaws.com -p bumblebee_bc &amp;gt; 20210615.bumblebee.sql # 备份数据表数据和结构 ls -lh # 查看备份下来的数据大小 tar -cjf b.tar.bz2 20210615.bumblebee.sql # 网络慢的，压缩一下方便下载 logout # 退出远程连接 scp username@stg2bumblebee-node-1.micai.local:b.tar.bz2 . # 拷贝到本地，.指当前目录文件 </description>
+    </item>
+    
+  </channel>
+</rss>

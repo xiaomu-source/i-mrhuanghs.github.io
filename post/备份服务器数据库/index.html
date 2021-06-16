@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="Software Engineering" />
-    <meta property="og:title" content="Software Engineering" />
-    <meta property="twitter:title" content="Software Engineering" />
+    <meta name="title" content="备份服务器数据库样例" />
+    <meta property="og:title" content="备份服务器数据库样例" />
+    <meta property="twitter:title" content="备份服务器数据库样例" />
     
 
     
-    <meta name="description" content="">
-    <meta property="og:description" content="" />
-    <meta property="twitter:description" content="" />
+    <meta name="description" content="备份服务器数据库命令">
+    <meta property="og:description" content="备份服务器数据库命令" />
+    <meta property="twitter:description" content="备份服务器数据库命令" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="Hanson, Mrhuang, Python, Django, Docker, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Posts-Hanson Huang Blog</title>
+    <title>备份服务器数据库样例-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/">
+    <link rel="canonical" href="/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -161,14 +161,41 @@
 
 
 
-<header class="intro-header" style="background-image: url('/images/main_go_wideandtall_darklayer.jpeg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/images/main_go_wideandtall_darklayer.jpeg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Software Engineering </h1>
-                    
-		    <span class="subheading">$ grep -rni &#34;The how&#39;s and why&#39;s&#34; .</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/sql" title="sql">
+                            sql
+                        </a>
+                        
+                        <a class="tag" href="/tags/service" title="service">
+                            service
+                        </a>
+                        
+                    </div>
+                    <h1>备份服务器数据库样例</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                                 &#34;hansen&#34;
+                         
+                        on 
+                        Friday, June 15, 2018
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -181,13 +208,42 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <h3 id="备份服务器数据库样例">备份服务器数据库样例</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>d bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
+<span style="color:#75715e"># 仅备份数据表结构</span>
+mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p  bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
+<span style="color:#75715e"># 备份数据表数据和结构</span>
+ls <span style="color:#f92672">-</span>lh
+<span style="color:#75715e"># 查看备份下来的数据大小</span>
+tar <span style="color:#f92672">-</span>cjf b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
+<span style="color:#75715e"># 网络慢的，压缩一下方便下载</span>
+logout
+<span style="color:#75715e"># 退出远程连接</span>
+scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:#f92672">-</span>node<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>micai<span style="color:#f92672">.</span>local:b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#f92672">.</span>
+<span style="color:#75715e"># 拷贝到本地，.指当前目录文件</span>
+</code></pre></div>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -196,7 +252,7 @@
             </div>
             
             <div class="
-                col-lg-8 col-lg-offset-2
+                col-lg-11 col-lg-offset-1
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
@@ -241,7 +297,7 @@
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href='/post/index.xml' rel="alternate" type="application/rss+xml" title="Mrhuang&#39;s blog" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Mrhuang&#39;s blog" >
                            <span class="fa-stack fa-lg">
                                <i class="fa fa-circle fa-stack-2x"></i>
                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
