@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>job on HansenHung&#39;s blog</title>
+    <title>Job on HansenHung&#39;s blog</title>
     <link>https://i-mrhuanghs.github.io/categories/job/</link>
-    <description>Recent content in job on HansenHung&#39;s blog</description>
+    <description>Recent content in Job on HansenHung&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/categories/job/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/categories/job/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>为emi生产report文件</title>
+      <link>https://i-mrhuanghs.github.io/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/</guid>
+      <description>Report 来源问题
+1、Account账号（Iban） 公司中 Application&amp;amp;Business 2、受益人（公司受益人） 数据问题
+1、数据重复问题 --&amp;gt;受益人删除 删除之前的已经上传的受益人 2、RefId 因为有两个不同的公司表，所以会有相同的id，refid是根据表id生成的，所以会有	相同的refid，所以要对refid进行改动 3、NR ANKSxx_NR 因为发送过去的事增量，所以根据上一个增量文件NR&amp;amp;ANKSxx_NR自+1 4、补全countrycode + Add（address） </description>
+    </item>
+    
     <item>
       <title>程序猿如何做好离职交接</title>
       <link>https://i-mrhuanghs.github.io/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/</link>
