@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithm on HansenHung&#39;s blog</title>
+    <link>https://i-mrhuanghs.github.io/tags/algorithm/</link>
+    <description>Recent content in Algorithm on HansenHung&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>list[] 和 list[:]的区别</title>
+      <link>https://i-mrhuanghs.github.io/post/list%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sat, 11 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/list%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>list[] 和 list[:] 的理解 　list“赋值”时会用到list2 = list1 或者 list2[:] = list1，前者两个名字指向同一个对象，后者两个名字指向不同对象。理解如下：
+　首先，python中没有赋值的说法，只有名称到对象的引用；
+　list2 = list1是把list1所指的对象绑定到名字list2上，没有产生新list，只是新增了一个引用；
+　正因为两个名称指向的同一个对象，所以修改list1，那么list2也会改变；
+　通俗理解：以前有一套三室一厅的房子，户主叫list1。后来list1和list2结婚，房产证上户主的名字加了一个，但房子还是只有一套。list1如果把客厅刷成了蓝色，那list2回家的时候会发现客厅是蓝色的了。
+　而list2 = list1[:]则是把list1通过切片运算取得的新list对象绑定到list2上，产生了新list，名称和引用也不同，所以，修改其中一个，另一个不会变。
+　注意，这里的切片是浅拷贝，参考下面的笔记。
+　通俗理解：从前有一套三室一厅的房子，户主叫list1。后来有个叫list2的，觉得list1的房子不错，于是买了一套相同户型的，也装修得一模一样。后来list1把自己的客厅刷成了蓝色，list2回家发现自己家的客厅还是白色，并没有变成蓝色。
+浅拷贝（shallow copy） 　浅拷贝会创建新对象，其内容是原对象的引用。
+　浅拷贝有三种形式：切片操作，工厂函数，copy模块中的copy函数。
+　比如对：a = [1,2,3,&amp;ldquo;hello&amp;rdquo;,[&amp;ldquo;python&amp;rdquo;,&amp;ldquo;C++&amp;quot;]]
+　1、切片操作：b = a[:] 或者 b = [each for each in a]
+　2、工厂函数：b = list(a)
+　3、copy函数：b = copy.copy(a)
+　浅拷贝产生的b不再是a了，使用is可以发现他们不是同一个对象，使用id查看，发现它们也不指向同一片内存。但是当我们使用 id(x) for x in a 和 id(x) for x in b 时，可以看到二者包含的元素的地址是相同的。</description>
+    </item>
+    
+  </channel>
+</rss>

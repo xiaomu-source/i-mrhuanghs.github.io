@@ -6,7 +6,33 @@
     <description>Recent content in Django on HansenHung&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://i-mrhuanghs.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx uwsgi wsgi django 这些东西究竟是什么关系</title>
+      <link>https://i-mrhuanghs.github.io/post/nginx_uwsgi_wsgi_django%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/nginx_uwsgi_wsgi_django%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>有太多的文章告诉我们nginx uwsgi django 这些东西怎么用了，太多的人知道这些东西的怎么使用，怎么配置，怎么优化，但是还是有一部分人比如我这种水货不知道这些东西到底是啥，为啥一个项目的发布要经过这么多层级，他们每一层都做了什么，都是必须的吗
+1、首先nginx 是对外的服务接口，外部浏览器通过url访问nginx,
+2、nginx 接收到浏览器发送过来的http请求，将包进行解析，分析url，如果是静态文件请求就直接访问用户给nginx配置的静态文件目录，直接返回用户请求的静态文件，
+如果不是静态文件，而是一个动态的请求，那么nginx就将请求转发给uwsgi,uwsgi 接收到请求之后将包进行处理，处理成wsgi可以接受的格式，并发给wsgi,wsgi 根据请求调用应用程序的某个文件，某个文件的某个函数，最后处理完将返回值再次交给wsgi,wsgi将返回值进行打包，打包成uwsgi能够接收的格式，uwsgi接收wsgi 发送的请求，并转发给nginx,nginx最终将返回值返回给浏览器。
+3、要知道第一级的nginx并不是必须的，uwsgi完全可以完成整个的和浏览器交互的流程，但是要考虑到某些情况
+3.1 安全问题，程序不能直接被浏览器访问到，而是通过nginx,nginx只开放某个接口，uwsgi本身是内网接口，这样运维人员在nginx上加上安全性的限制，可以达到保护程序的作用。
+3.2负载均衡问题，一个uwsgi很可能不够用，即使开了多个work也是不行，毕竟一台机器的cpu和内存都是有限的，有了nginx做代理，一个nginx可以代理多台uwsgi完成uwsgi的负载均衡。
+3。3静态文件问题，用django或是uwsgi这种东西来负责静态文件的处理是很浪费的行为，而且他们本身对文件的处理也不如nginx好，所以整个静态文件的处理都直接由nginx完成，静态文件的访问完全不去经过uwsgi以及其后面的东西。
+这就是这几者之间的关系。 ———————————————— 原文链接：https://blog.csdn.net/u014761344/article/details/40146597</description>
+    </item>
+    
+    <item>
+      <title>Django的异常处理</title>
+      <link>https://i-mrhuanghs.github.io/post/django%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/django%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Django 流式响应中文csv样例</title>
       <link>https://i-mrhuanghs.github.io/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/</link>
@@ -20,6 +46,18 @@
 而在csv中，中文的处理也至关重要，要保证用excel打开csv不乱码什么的。。为了节约空间，我就把所有代码贴到一起了。。实际使用按照项目的规划放置哈
 上代码：
 from __future__ import absolute_import import csv import codecs import cStringIO class Echo(object): def write(self, value): return value class UnicodeWriter: &amp;#34;&amp;#34;&amp;#34; A CSV writer which will write rows to CSV file &amp;#34;f&amp;#34;, which is encoded in the given encoding. &amp;#34;&amp;#34;&amp;#34; def __init__(self, f, dialect=csv.excel, encoding=&amp;#34;utf-8&amp;#34;, **kwds): # Redirect output to a queue self.queue = cStringIO.StringIO() self.writer = csv.writer(self.queue, dialect=dialect, **kwds) self.stream = f self.encoder = codecs.</description>
+    </item>
+    
+    <item>
+      <title>谈谈Nginx、uWSGI、django之间的联系</title>
+      <link>https://i-mrhuanghs.github.io/post/%E8%B0%88%E8%B0%88nginxuwsgidjango%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://i-mrhuanghs.github.io/post/%E8%B0%88%E8%B0%88nginxuwsgidjango%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB/</guid>
+      <description>Nginx：一个高性能的HTTP和反向代理服务器，占有内存少，并发能力强。uWSGI：一个Web服务器，实现了WSGI协议、uwsgi、httpd等协议。 WSGI：一种Web服务器网关接口
+注意与uwsgi区别，uwsgi是一种线路协议而不是通信协议，常用于在uWSGI服务器与其他网络服务器的数据通信。
+django项目上线的流程：
+ 1、首先客户端请求服务资源， 2、nginx作为直接对外的服务接口,接收到客户端发送过来的http请求,会解包、分析， 3、如果是静态文件请求就根据nginx配置的静态文件目录，返回请求的资源， 4、如果是动态的请求,nginx就通过配置文件,将请求传递给uWSGI；uWSGI 将接收到的包进行处理，并转发给wsgi， 5、wsgi根据请求调用django工程的某个文件或函数，处理完后django将返回值交给wsgi， 6、wsgi将返回值进行打包，转发给uWSGI， 7、uWSGI接收后转发给nginx,nginx最终将返回值返回给客户端(如浏览器)。 ———————————————— 原文链接：https://blog.csdn.net/sinat_41898105/article/details/80806394</description>
     </item>
     
   </channel>

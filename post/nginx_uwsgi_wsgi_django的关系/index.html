@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="备份服务器数据库样例" />
-    <meta property="og:title" content="备份服务器数据库样例" />
-    <meta property="twitter:title" content="备份服务器数据库样例" />
+    <meta name="title" content="nginx uwsgi wsgi django 这些东西究竟是什么关系" />
+    <meta property="og:title" content="nginx uwsgi wsgi django 这些东西究竟是什么关系" />
+    <meta property="twitter:title" content="nginx uwsgi wsgi django 这些东西究竟是什么关系" />
     
 
     
-    <meta name="description" content="备份服务器数据库命令">
-    <meta property="og:description" content="备份服务器数据库命令" />
-    <meta property="twitter:description" content="备份服务器数据库命令" />
+    <meta name="description" content="nginx uwsgi wsgi django 这些东西究竟是什么关系">
+    <meta property="og:description" content="nginx uwsgi wsgi django 这些东西究竟是什么关系" />
+    <meta property="twitter:description" content="nginx uwsgi wsgi django 这些东西究竟是什么关系" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="HansenHuang, Hanson, Hansen, Mrhuanghs, huanghansen, Python, Django, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>备份服务器数据库样例-Hanson Huang Blog</title>
+    <title>nginx uwsgi wsgi django 这些东西究竟是什么关系-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="canonical" href="/post/nginx_uwsgi_wsgi_django%E7%9A%84%E5%85%B3%E7%B3%BB/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -174,24 +174,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/sql" title="sql">
-                            sql
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
                         </a>
                         
-                        <a class="tag" href="/tags/service" title="service">
-                            service
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
                     </div>
-                    <h1>备份服务器数据库样例</h1>
+                    <h1>nginx uwsgi wsgi django 这些东西究竟是什么关系</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                 &#34;hansen&#34;
+                                 &#34;打酱油的小木匠&#34;
                          
                         on 
-                        Friday, June 15, 2018
+                        Monday, July 9, 2018
                         
                         
                         
@@ -216,20 +216,18 @@
                 post-container">
 
                 
-                <h3 id="备份服务器数据库样例">备份服务器数据库样例</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>d bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 仅备份数据表结构</span>
-mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p  bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 备份数据表数据和结构</span>
-ls <span style="color:#f92672">-</span>lh
-<span style="color:#75715e"># 查看备份下来的数据大小</span>
-tar <span style="color:#f92672">-</span>cjf b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 网络慢的，压缩一下方便下载</span>
-logout
-<span style="color:#75715e"># 退出远程连接</span>
-scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:#f92672">-</span>node<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>micai<span style="color:#f92672">.</span>local:b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#f92672">.</span>
-<span style="color:#75715e"># 拷贝到本地，.指当前目录文件</span>
-</code></pre></div>
+                <p>有太多的文章告诉我们nginx uwsgi django 这些东西怎么用了，太多的人知道这些东西的怎么使用，怎么配置，怎么优化，但是还是有一部分人比如我这种水货不知道这些东西到底是啥，为啥一个项目的发布要经过这么多层级，他们每一层都做了什么，都是必须的吗</p>
+<p>1、首先nginx 是对外的服务接口，外部浏览器通过url访问nginx,</p>
+<p>2、nginx 接收到浏览器发送过来的http请求，将包进行解析，分析url，如果是静态文件请求就直接访问用户给nginx配置的静态文件目录，直接返回用户请求的静态文件，</p>
+<p>如果不是静态文件，而是一个动态的请求，那么nginx就将请求转发给uwsgi,uwsgi 接收到请求之后将包进行处理，处理成wsgi可以接受的格式，并发给wsgi,wsgi 根据请求调用应用程序的某个文件，某个文件的某个函数，最后处理完将返回值再次交给wsgi,wsgi将返回值进行打包，打包成uwsgi能够接收的格式，uwsgi接收wsgi 发送的请求，并转发给nginx,nginx最终将返回值返回给浏览器。</p>
+<p>3、要知道第一级的nginx并不是必须的，uwsgi完全可以完成整个的和浏览器交互的流程，但是要考虑到某些情况</p>
+<p>3.1 安全问题，程序不能直接被浏览器访问到，而是通过nginx,nginx只开放某个接口，uwsgi本身是内网接口，这样运维人员在nginx上加上安全性的限制，可以达到保护程序的作用。</p>
+<p>3.2负载均衡问题，一个uwsgi很可能不够用，即使开了多个work也是不行，毕竟一台机器的cpu和内存都是有限的，有了nginx做代理，一个nginx可以代理多台uwsgi完成uwsgi的负载均衡。</p>
+<p>3。3静态文件问题，用django或是uwsgi这种东西来负责静态文件的处理是很浪费的行为，而且他们本身对文件的处理也不如nginx好，所以整个静态文件的处理都直接由nginx完成，静态文件的访问完全不去经过uwsgi以及其后面的东西。</p>
+<p>这就是这几者之间的关系。
+————————————————
+原文链接：https://blog.csdn.net/u014761344/article/details/40146597</p>
+
 
                 
 
@@ -237,13 +235,13 @@ scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">&larr;
+                        <a href="/post/django%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" data-toggle="tooltip" data-placement="top" title="Django的异常处理">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="为emi生产report文件">Next
+                        <a href="/post/list%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/" data-toggle="tooltip" data-placement="top" title="list[] 和 list[:]的区别">Next
                             Post &rarr;</a>
                     </li>
                     
