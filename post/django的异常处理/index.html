@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="备份服务器数据库样例" />
-    <meta property="og:title" content="备份服务器数据库样例" />
-    <meta property="twitter:title" content="备份服务器数据库样例" />
+    <meta name="title" content="Django的异常处理" />
+    <meta property="og:title" content="Django的异常处理" />
+    <meta property="twitter:title" content="Django的异常处理" />
     
 
     
-    <meta name="description" content="备份服务器数据库命令">
-    <meta property="og:description" content="备份服务器数据库命令" />
-    <meta property="twitter:description" content="备份服务器数据库命令" />
+    <meta name="description" content="Django的异常处理">
+    <meta property="og:description" content="Django的异常处理" />
+    <meta property="twitter:description" content="Django的异常处理" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="HansenHuang, Hanson, Hansen, Mrhuanghs, huanghansen, Python, Django, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>备份服务器数据库样例-Hanson Huang Blog</title>
+    <title>Django的异常处理-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="canonical" href="/post/django%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -174,24 +174,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/sql" title="sql">
-                            sql
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
-                        <a class="tag" href="/tags/service" title="service">
-                            service
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
                         </a>
                         
                     </div>
-                    <h1>备份服务器数据库样例</h1>
+                    <h1>Django的异常处理</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                 &#34;hansen&#34;
+                                 &#34;hanson&#34;
                          
                         on 
-                        Friday, June 15, 2018
+                        Thursday, July 5, 2018
                         
                         
                         
@@ -216,20 +216,7 @@
                 post-container">
 
                 
-                <h3 id="备份服务器数据库样例">备份服务器数据库样例</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>d bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 仅备份数据表结构</span>
-mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p  bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 备份数据表数据和结构</span>
-ls <span style="color:#f92672">-</span>lh
-<span style="color:#75715e"># 查看备份下来的数据大小</span>
-tar <span style="color:#f92672">-</span>cjf b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 网络慢的，压缩一下方便下载</span>
-logout
-<span style="color:#75715e"># 退出远程连接</span>
-scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:#f92672">-</span>node<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>micai<span style="color:#f92672">.</span>local:b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#f92672">.</span>
-<span style="color:#75715e"># 拷贝到本地，.指当前目录文件</span>
-</code></pre></div>
+                
 
                 
 
@@ -237,13 +224,13 @@ scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">&larr;
+                        <a href="/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="为emi生产report文件">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="为emi生产report文件">Next
+                        <a href="/post/nginx_uwsgi_wsgi_django%E7%9A%84%E5%85%B3%E7%B3%BB/" data-toggle="tooltip" data-placement="top" title="nginx uwsgi wsgi django 这些东西究竟是什么关系">Next
                             Post &rarr;</a>
                     </li>
                     

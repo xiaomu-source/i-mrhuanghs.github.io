@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="备份服务器数据库样例" />
-    <meta property="og:title" content="备份服务器数据库样例" />
-    <meta property="twitter:title" content="备份服务器数据库样例" />
+    <meta name="title" content="list[] 和 list[:]的区别" />
+    <meta property="og:title" content="list[] 和 list[:]的区别" />
+    <meta property="twitter:title" content="list[] 和 list[:]的区别" />
     
 
     
-    <meta name="description" content="备份服务器数据库命令">
-    <meta property="og:description" content="备份服务器数据库命令" />
-    <meta property="twitter:description" content="备份服务器数据库命令" />
+    <meta name="description" content="list[] 和 list[:]的区别&amp;深浅拷贝的区别">
+    <meta property="og:description" content="list[] 和 list[:]的区别&amp;深浅拷贝的区别" />
+    <meta property="twitter:description" content="list[] 和 list[:]的区别&amp;深浅拷贝的区别" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="HansenHuang, Hanson, Hansen, Mrhuanghs, huanghansen, Python, Django, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>备份服务器数据库样例-Hanson Huang Blog</title>
+    <title>list[] 和 list[:]的区别-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="canonical" href="/post/list%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -174,24 +174,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/sql" title="sql">
-                            sql
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
-                        <a class="tag" href="/tags/service" title="service">
-                            service
+                        <a class="tag" href="/tags/algorithm" title="Algorithm">
+                            Algorithm
                         </a>
                         
                     </div>
-                    <h1>备份服务器数据库样例</h1>
+                    <h1>list[] 和 list[:]的区别</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                 &#34;hansen&#34;
+                                 &#34;&#34;
                          
                         on 
-                        Friday, June 15, 2018
+                        Saturday, August 11, 2018
                         
                         
                         
@@ -216,20 +216,39 @@
                 post-container">
 
                 
-                <h3 id="备份服务器数据库样例">备份服务器数据库样例</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>d bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 仅备份数据表结构</span>
-mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p  bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 备份数据表数据和结构</span>
-ls <span style="color:#f92672">-</span>lh
-<span style="color:#75715e"># 查看备份下来的数据大小</span>
-tar <span style="color:#f92672">-</span>cjf b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 网络慢的，压缩一下方便下载</span>
-logout
-<span style="color:#75715e"># 退出远程连接</span>
-scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:#f92672">-</span>node<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>micai<span style="color:#f92672">.</span>local:b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#f92672">.</span>
-<span style="color:#75715e"># 拷贝到本地，.指当前目录文件</span>
-</code></pre></div>
+                <h2 id="list-和-list-的理解">list[] 和 list[:] 的理解</h2>
+<p>　　list“赋值”时会用到list2 = list1 或者 list2[:] = list1，前者两个名字指向同一个对象，后者两个名字指向不同对象。理解如下：</p>
+<p>　　首先，python中没有赋值的说法，只有名称到对象的引用；</p>
+<p>　　list2 = list1是把list1所指的对象绑定到名字list2上，没有产生新list，只是新增了一个引用；</p>
+<p>　　正因为两个名称指向的同一个对象，所以修改list1，那么list2也会改变；</p>
+<p>　　通俗理解：以前有一套三室一厅的房子，户主叫list1。后来list1和list2结婚，房产证上户主的名字加了一个，但房子还是只有一套。list1如果把客厅刷成了蓝色，那list2回家的时候会发现客厅是蓝色的了。</p>
+<p>　　而list2 = list1[:]则是把list1通过切片运算取得的新list对象绑定到list2上，产生了新list，名称和引用也不同，所以，修改其中一个，另一个不会变。</p>
+<p>　　注意，这里的切片是浅拷贝，参考下面的笔记。</p>
+<p>　　通俗理解：从前有一套三室一厅的房子，户主叫list1。后来有个叫list2的，觉得list1的房子不错，于是买了一套相同户型的，也装修得一模一样。后来list1把自己的客厅刷成了蓝色，list2回家发现自己家的客厅还是白色，并没有变成蓝色。</p>
+<h2 id="浅拷贝shallow-copy">浅拷贝（shallow copy）</h2>
+<p>　　浅拷贝会创建新对象，其内容是原对象的引用。</p>
+<p>　　浅拷贝有三种形式：切片操作，工厂函数，copy模块中的copy函数。</p>
+<p>　　比如对：a = [1,2,3,&ldquo;hello&rdquo;,[&ldquo;python&rdquo;,&ldquo;C++&quot;]]</p>
+<p>　　　　1、切片操作：b = a[:] 或者 b = [each for each in a]</p>
+<p>　　　　2、工厂函数：b = list(a)</p>
+<p>　　　　3、copy函数：b = copy.copy(a)</p>
+<p>　　浅拷贝产生的b不再是a了，使用is可以发现他们不是同一个对象，使用id查看，发现它们也不指向同一片内存。但是当我们使用 id(x) for x in a 和 id(x) for x in b 时，可以看到二者包含的元素的地址是相同的。</p>
+<p>　　在这种情况下，a和b是不同的对象，修改b理论上不会影响a。</p>
+<p>　　比如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">	b<span style="color:#f92672">.</span>append([<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>])<span style="color:#960050;background-color:#1e0010">：</span>
+
+　　b <span style="color:#f92672">=</span> a[:]
+
+　　b<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;ADD&#34;</span>)
+</code></pre></div><p>　　输出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;hello&#39;</span>, [<span style="color:#e6db74">&#39;python&#39;</span>, <span style="color:#e6db74">&#39;C++&#39;</span>]] b [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;hello&#39;</span>, [<span style="color:#e6db74">&#39;python&#39;</span>, <span style="color:#e6db74">&#39;C++&#39;</span>], <span style="color:#e6db74">&#39;ADD&#39;</span>]
+</code></pre></div><p>　　**注：**浅拷贝之所以称为浅拷贝，是它仅仅只拷贝了一层，在a中有一个嵌套的list，如果我们修改了它，情况就不一样了。</p>
+<p>　a[4].append(&ldquo;C&rdquo;)。查看b，可发现b也发生了变化。这是因为，我们修改了嵌套的list。修改外层元素，会修改它的引用，让它们指向别的位置，修改嵌套列表中的元素，列表的地址并为发生变化，指向的都是同一个位置。</p>
+<h2 id="深拷贝deep-copy">深拷贝（deep copy）</h2>
+<p>　　深拷贝只有一种形式，copy模块中的deepcopy函数。</p>
+<p>　　和浅拷贝对应，深拷贝拷贝了对象的所有元素，包括多层嵌套的元素。因而，它的时间和空间开销要高。</p>
+<p>　　同样对上述list类型的a，若使用b = copy.deepcopy(a)，再修改b将不会影响到a了。即使嵌套的列表具有更深的层次，也不会产生任何影响，因为深拷贝出来的对象根本就是一个全新的对象，不再与原来的对象有任何关联。</p>
+
 
                 
 
@@ -237,15 +256,10 @@ scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">&larr;
+                        <a href="/post/nginx_uwsgi_wsgi_django%E7%9A%84%E5%85%B3%E7%B3%BB/" data-toggle="tooltip" data-placement="top" title="nginx uwsgi wsgi django 这些东西究竟是什么关系">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="为emi生产report文件">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 

@@ -28,15 +28,15 @@
     
 
     
-    <meta name="title" content="备份服务器数据库样例" />
-    <meta property="og:title" content="备份服务器数据库样例" />
-    <meta property="twitter:title" content="备份服务器数据库样例" />
+    <meta name="title" content="谈谈Nginx、uWSGI、django之间的联系" />
+    <meta property="og:title" content="谈谈Nginx、uWSGI、django之间的联系" />
+    <meta property="twitter:title" content="谈谈Nginx、uWSGI、django之间的联系" />
     
 
     
-    <meta name="description" content="备份服务器数据库命令">
-    <meta property="og:description" content="备份服务器数据库命令" />
-    <meta property="twitter:description" content="备份服务器数据库命令" />
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
     
 
     
@@ -47,9 +47,9 @@
     <meta name="keyword"  content="HansenHuang, Hanson, Hansen, Mrhuanghs, huanghansen, Python, Django, DRF, MySQL, Redis, Celery, HTML, JS, CS, Crawler">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>备份服务器数据库样例-Hanson Huang Blog</title>
+    <title>谈谈Nginx、uWSGI、django之间的联系-Hanson Huang Blog</title>
 
-    <link rel="canonical" href="/post/%E5%A4%87%E4%BB%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">
+    <link rel="canonical" href="/post/%E8%B0%88%E8%B0%88nginxuwsgidjango%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -174,24 +174,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/sql" title="sql">
-                            sql
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
                         </a>
                         
-                        <a class="tag" href="/tags/service" title="service">
-                            service
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
                         </a>
                         
                     </div>
-                    <h1>备份服务器数据库样例</h1>
-                    <h2 class="subheading"></h2>
+                    <h1>谈谈Nginx、uWSGI、django之间的联系</h1>
+                    <h2 class="subheading">谈谈Nginx、uWSGI、django之间的联系，上线必知！！！</h2>
                     <span class="meta">
                         Posted by 
                         
-                                 &#34;hansen&#34;
+                                 &#34;lajos182&#34;
                          
                         on 
-                        Friday, June 15, 2018
+                        Monday, June 4, 2018
                         
                         
                         
@@ -216,20 +216,24 @@
                 post-container">
 
                 
-                <h3 id="备份服务器数据库样例">备份服务器数据库样例</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>d bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 仅备份数据表结构</span>
-mysqldump <span style="color:#f92672">-</span>ubumblebeeuser <span style="color:#f92672">-</span>hstg2mysql<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>czrdgd08qzk4<span style="color:#f92672">.</span>eu<span style="color:#f92672">-</span>north<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>rds<span style="color:#f92672">.</span>amazonaws<span style="color:#f92672">.</span>com <span style="color:#f92672">-</span>p  bumblebee_bc <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 备份数据表数据和结构</span>
-ls <span style="color:#f92672">-</span>lh
-<span style="color:#75715e"># 查看备份下来的数据大小</span>
-tar <span style="color:#f92672">-</span>cjf b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#ae81ff">20210615.</span>bumblebee<span style="color:#f92672">.</span>sql
-<span style="color:#75715e"># 网络慢的，压缩一下方便下载</span>
-logout
-<span style="color:#75715e"># 退出远程连接</span>
-scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:#f92672">-</span>node<span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>micai<span style="color:#f92672">.</span>local:b<span style="color:#f92672">.</span>tar<span style="color:#f92672">.</span>bz2 <span style="color:#f92672">.</span>
-<span style="color:#75715e"># 拷贝到本地，.指当前目录文件</span>
-</code></pre></div>
+                <p>Nginx：一个高性能的HTTP和反向代理服务器，占有内存少，并发能力强。uWSGI：一个Web服务器，实现了WSGI协议、uwsgi、httpd等协议。
+WSGI：一种Web服务器网关接口</p>
+<p>注意与uwsgi区别，uwsgi是一种线路协议而不是通信协议，常用于在uWSGI服务器与其他网络服务器的数据通信。</p>
+<p>django项目上线的流程：</p>
+<p>
+  <img src="/Users/hansenhuang/github/hugo-blog/static/images/context_image/Nginx_uWSGI_django.png" alt="Nginx_uWSGI_django">
+
+</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">1、首先客户端请求服务资源，
+2、nginx作为直接对外的服务接口,接收到客户端发送过来的http请求,会解包、分析，
+3、如果是静态文件请求就根据nginx配置的静态文件目录，返回请求的资源，
+4、如果是动态的请求,nginx就通过配置文件,将请求传递给uWSGI；uWSGI 将接收到的包进行处理，并转发给wsgi，
+5、wsgi根据请求调用django工程的某个文件或函数，处理完后django将返回值交给wsgi，
+6、wsgi将返回值进行打包，转发给uWSGI，
+7、uWSGI接收后转发给nginx,nginx最终将返回值返回给客户端(如浏览器)。
+</code></pre></div><p>————————————————
+原文链接：https://blog.csdn.net/sinat_41898105/article/details/80806394</p>
+
 
                 
 
@@ -237,13 +241,13 @@ scp username<span style="color:#a6e22e">@stg2bumblebee</span><span style="color:
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/%E5%A6%82%E4%BD%95%E5%81%9A%E5%A5%BD%E7%A6%BB%E8%81%8C%E4%BA%A4%E6%8E%A5/" data-toggle="tooltip" data-placement="top" title="程序猿如何做好离职交接">&larr;
+                        <a href="/post/%E7%AC%AC%E4%B8%80%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-toggle="tooltip" data-placement="top" title="">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/post/%E4%B8%BAemi%E7%94%9F%E4%BA%A7report%E6%96%87%E4%BB%B6/" data-toggle="tooltip" data-placement="top" title="为emi生产report文件">Next
+                        <a href="/post/django%E6%B5%81%E5%BC%8F%E5%93%8D%E5%BA%94csv%E6%A0%B7%E4%BE%8B/" data-toggle="tooltip" data-placement="top" title="Django 流式响应中文csv样例">Next
                             Post &rarr;</a>
                     </li>
                     
