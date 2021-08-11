@@ -266,16 +266,9 @@
             谈谈Nginx、uWSGI、django之间的联系
         </h2>
 	
-        <h3 class="post-subtitle">
-            谈谈Nginx、uWSGI、django之间的联系，上线必知！！！
-        </h3>
-	
         <div class="post-content-preview">
 	    
-            Nginx：一个高性能的HTTP和反向代理服务器，占有内存少，并发能力强。uWSGI：一个Web服务器，实现了WSGI协议、uwsgi、httpd等协议。 WSGI：一种Web服务器网关接口
-注意与uwsgi区别，uwsgi是一种线路协议而不是通信协议，常用于在uWSGI服务器与其他网络服务器的数据通信。
-django项目上线的流程：
- 1、首先客户端请求服务资源， 2、nginx作为直接对外的服务接口,接收到客户端发送过来的http请求,会解包、分析， 3、如果是静态文件请求就根据nginx配置的静态文件目录，返回请求的资源， 4、如果是动态的请求,nginx就通过配置文件,将请求传递给uWSGI；uWSGI 将接收到的包进行处理，并转发给wsgi， 5、wsgi根据请求调用django工程的某个文件或函数，处理完后django将返回值交给wsgi， 6、wsgi将返回值进行打包，转发给uWSGI， 7、uWSGI接收后转发给nginx,nginx最终将返回值返回给客户端(如浏览器)。 ———————————————— 原文链接：https://blog.csdn.net/sinat_41898105/article/details/80806394
+            谈谈Nginx、uWSGI、django之间的联系，上线必知！！！
         
        
 
